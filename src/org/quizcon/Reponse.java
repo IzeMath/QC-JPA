@@ -1,7 +1,9 @@
 package org.quizcon;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Entity implementation class for Entity: Reponse
@@ -22,11 +24,18 @@ public class Reponse implements Serializable {
 		super();
 	}
 
+	public Reponse(final String libelle) {
+		super();
+		this.libelle = libelle;
+	}
+
+
+
 	public String getLibelle() {
 		return libelle;
 	}
 
-	public void setLibelle(String libelle) {
+	public void setLibelle(final String libelle) {
 		this.libelle = libelle;
 	}
 	

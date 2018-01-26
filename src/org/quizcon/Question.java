@@ -1,89 +1,99 @@
 package org.quizcon;
 
-
 import java.io.Serializable;
-import java.util.List;
+import java.net.URL;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  * Entity implementation class for Entity: Questions
  *
  */
 @Entity
-public class Question implements Serializable {
+public abstract class Question implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int ID;
 	private String theme;
+	private String difficulte;
 	private String libelle;
-	@OneToMany(fetch=FetchType.EAGER)
-	private List<Reponse> listReponse;
-	@OneToOne(fetch=FetchType.EAGER)
-	private Reponse laReponse;
-	
-	
+	private String explications;
+	private URL contenuURL;
+	private boolean isVal = false;
+
 	public Question() {
 		super();
 	}
+
+	public Question(final String theme, final String difficulte, final String libelle, final String explications) {
+		super();
+		this.theme = theme;
+		this.difficulte = difficulte;
+		this.libelle = libelle;
+		this.explications = explications;
+	}
+
 
 
 	public int getID() {
 		return ID;
 	}
 
-
-	public void setID(int iD) {
+	public void setID(final int iD) {
 		ID = iD;
 	}
-
 
 	public String getTheme() {
 		return theme;
 	}
 
-
-	public void setTheme(String theme) {
+	public void setTheme(final String theme) {
 		this.theme = theme;
 	}
-
 
 	public String getLibelle() {
 		return libelle;
 	}
 
-
-	public void setLibelle(String libelle) {
+	public void setLibelle(final String libelle) {
 		this.libelle = libelle;
 	}
 
-
-	public List<Reponse> getListReponse() {
-		return listReponse;
+	public String getExplications() {
+		return explications;
 	}
 
-
-	public void setListReponse(List<Reponse> listReponse) {
-		this.listReponse = listReponse;
+	public void setExplications(final String explications) {
+		this.explications = explications;
 	}
 
-
-	public Reponse getLaReponse() {
-		return laReponse;
+	public URL getContenuURL() {
+		return contenuURL;
 	}
 
-
-	public void setLaReponse(Reponse laReponse) {
-		this.laReponse = laReponse;
+	public void setContenuURL(final URL contenuURL) {
+		this.contenuURL = contenuURL;
 	}
-   
+
+	public void setVal(final boolean isVal) {
+		this.isVal = isVal;
+	}
+
+	public boolean isVal() {
+		return isVal;
+	}
+
+	public String getDifficulte() {
+		return difficulte;
+	}
+
+	public void setDifficulte(final String difficulte) {
+		this.difficulte = difficulte;
+	}
 	
 	
+
 }
