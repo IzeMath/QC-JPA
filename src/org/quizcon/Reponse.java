@@ -3,6 +3,8 @@ package org.quizcon;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -13,10 +15,10 @@ import javax.persistence.Id;
 
 public class Reponse implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String libelle;
 
@@ -29,8 +31,6 @@ public class Reponse implements Serializable {
 		this.libelle = libelle;
 	}
 
-
-
 	public String getLibelle() {
 		return libelle;
 	}
@@ -38,7 +38,10 @@ public class Reponse implements Serializable {
 	public void setLibelle(final String libelle) {
 		this.libelle = libelle;
 	}
-	
-	
-   
+
+	@Override
+	public String toString() {
+		return libelle;
+	}
+
 }

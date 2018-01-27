@@ -4,38 +4,38 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-
 
 /**
  * Entity implementation class for Entity: Utilisateur
  *
  */
 @NamedQueries({
-	@NamedQuery(name = "UtilisateurFindByLogin", query = "SELECT u FROM Utilisateur u where u.email = :email AND u.password = :password") })
+		@NamedQuery(name = "UtilisateurFindByLogin", query = "SELECT u FROM Utilisateur u where u.email = :email AND u.password = :password") })
 
 @Entity
 public class Utilisateur implements Serializable {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String fname;
 	private String username;
 	private String email;
 	private String password;
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public Utilisateur() {
 		super();
 	}
 
-	
-	public Utilisateur(String name, String fname, String username, String email, String password) {
+	public Utilisateur(final String name, final String fname, final String username, final String email,
+			final String password) {
 		super();
 		this.name = name;
 		this.fname = fname;
@@ -44,26 +44,21 @@ public class Utilisateur implements Serializable {
 		this.password = password;
 	}
 
-
 	public String getName() {
 		return name;
 	}
 
-
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
-
 
 	public String getUsername() {
 		return username;
 	}
 
-
-	public void setUsername(String username) {
+	public void setUsername(final String username) {
 		this.username = username;
 	}
-
 
 	public int getId() {
 		return id;
@@ -97,13 +92,10 @@ public class Utilisateur implements Serializable {
 		this.password = password;
 	}
 
-	
 	@Override
 	public String toString() {
-		return "Utilisateur [id=" + id + ", email=" + email + ", fname=" + fname + ", username=" + username +", name=" + name + ", password="
-				+ password +"";
+		return "Utilisateur [id=" + id + ", email=" + email + ", fname=" + fname + ", username=" + username + ", name="
+				+ name + ", password=" + password + "";
 	}
-	
-	
 
 }

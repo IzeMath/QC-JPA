@@ -4,19 +4,31 @@ import java.io.Serializable;
 import java.net.URL;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Entity implementation class for Entity: Questions
  *
  */
+
+@NamedQueries({ @NamedQuery(name = "getRandomQuestion", query = "SELECT q FROM Question q ORDER BY RAND()"),
+		@NamedQuery(name = "getAllTheme", query = "SELECT DISTINCT q.theme FROM Question q"),
+		@NamedQuery(name = "getAllDifficulties", query = "SELECT DISTINCT q.difficulte FROM Question q"),
+		@NamedQuery(name = "getNbQuestionInWhere", query = "SELECT COUNT(q) FROM Question q WHERE q.difficulte IN :listDifficulties AND q.theme IN :listThemes")
+})
+
 @Entity
 public abstract class Question implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int ID;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String theme;
 	private String difficulte;
 	private String libelle;
@@ -36,14 +48,12 @@ public abstract class Question implements Serializable {
 		this.explications = explications;
 	}
 
-
-
 	public int getID() {
-		return ID;
+		return id;
 	}
 
 	public void setID(final int iD) {
-		ID = iD;
+		id = iD;
 	}
 
 	public String getTheme() {
@@ -93,7 +103,11 @@ public abstract class Question implements Serializable {
 	public void setDifficulte(final String difficulte) {
 		this.difficulte = difficulte;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", theme=" + theme + ", difficulte=" + difficulte + ", libelle=" + libelle
+				+ ", explications=" + explications + ", contenuURL=" + contenuURL + ", isVal=" + isVal + "]";
+	}
 
 }

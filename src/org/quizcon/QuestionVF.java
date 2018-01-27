@@ -32,4 +32,9 @@ public class QuestionVF extends Question implements Serializable {
 		this.reponse = reponse;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + " QuestionVF [reponse=" + reponse + "]";
+	}
+
 }

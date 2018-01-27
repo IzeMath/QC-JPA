@@ -18,9 +18,9 @@ public class QuestionSimple extends Question implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	public List<Reponse> listRep;
-	@OneToOne
-	public Reponse laReponse;
+	private List<Reponse> listRep;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Reponse laReponse;
 
 	public QuestionSimple() {
 		super();
@@ -49,5 +49,12 @@ public class QuestionSimple extends Question implements Serializable {
 	public void setLaReponse(final Reponse laReponse) {
 		this.laReponse = laReponse;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " QuestionSimple [listRep=" + listRep + ", laReponse=" + laReponse + "]";
+	}
+	
+	
 
 }
