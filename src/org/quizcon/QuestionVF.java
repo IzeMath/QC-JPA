@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 public class QuestionVF extends Question implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	public boolean reponse;
+	private boolean reponse;
 
 	public QuestionVF() {
 		super();
