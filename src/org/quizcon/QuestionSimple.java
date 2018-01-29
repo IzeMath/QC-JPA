@@ -27,8 +27,8 @@ public class QuestionSimple extends Question implements Serializable {
 	}
 
 	public QuestionSimple(final String theme, final String difficulte, final String libelle, final String explications,
-			final List<Reponse> listRep, final Reponse laReponse) {
-		super(theme, difficulte, libelle, explications);
+			final List<Reponse> listRep, final Reponse laReponse, final String lang) {
+		super(theme, difficulte, libelle, explications, lang);
 		this.listRep = listRep;
 		this.laReponse = laReponse;
 		// TODO Auto-generated constructor stub

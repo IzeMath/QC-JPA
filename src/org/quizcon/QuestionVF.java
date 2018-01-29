@@ -19,8 +19,8 @@ public class QuestionVF extends Question implements Serializable {
 	}
 
 	public QuestionVF(final String theme, final String difficulte, final String libelle, final String explications,
-			final boolean reponse) {
-		super(theme, difficulte, libelle, explications);
+			final boolean reponse, final String lang) {
+		super(theme, difficulte, libelle, explications, lang);
 		this.reponse = reponse;
 	}
 

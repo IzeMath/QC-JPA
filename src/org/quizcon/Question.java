@@ -34,18 +34,20 @@ public abstract class Question implements Serializable {
 	private String libelle;
 	private String explications;
 	private URL contenuURL;
+	private String lang;
 	private boolean isVal = false;
 
 	public Question() {
 		super();
 	}
 
-	public Question(final String theme, final String difficulte, final String libelle, final String explications) {
+	public Question(final String theme, final String difficulte, final String libelle, final String explications, final String lang) {
 		super();
 		this.theme = theme;
 		this.difficulte = difficulte;
 		this.libelle = libelle;
 		this.explications = explications;
+		this.lang = lang;
 	}
 
 	public int getID() {
@@ -102,6 +104,14 @@ public abstract class Question implements Serializable {
 
 	public void setDifficulte(final String difficulte) {
 		this.difficulte = difficulte;
+	}
+
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(final String lang) {
+		this.lang = lang;
 	}
 
 	@Override
