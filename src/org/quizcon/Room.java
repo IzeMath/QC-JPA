@@ -12,7 +12,8 @@ import javax.persistence.NamedQuery;
  *
  */
 
-@NamedQueries({ @NamedQuery(name = "getListRoom", query = "SELECT r FROM Room r")})
+@NamedQueries({ @NamedQuery(name = "getListRoom", query = "SELECT r FROM Room r"),
+		@NamedQuery(name = "canAccess", query = "SELECT r FROM Room r WHERE r.id = :id AND r.password = :password") })
 
 @Entity
 
