@@ -71,7 +71,7 @@ public class Room implements Serializable {
 	}
 
 	public boolean isPrivate() {
-		return (this.password != null || this.password != "");
+		return (this.password != null);
 	}
 
 }
