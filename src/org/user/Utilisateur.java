@@ -1,13 +1,18 @@
 package org.user;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  * Entity implementation class for Entity: Utilisateur
@@ -22,11 +27,13 @@ public class Utilisateur implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
-	private String fname;
+	@Column(unique = true)
 	private String username;
+	@Column(unique = true)
 	private String email;
 	private String password;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Statistique> lStat;
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,22 +41,11 @@ public class Utilisateur implements Serializable {
 		super();
 	}
 
-	public Utilisateur(final String name, final String fname, final String username, final String email,
-			final String password) {
+	public Utilisateur(final String username, final String email, final String password) {
 		super();
-		this.name = name;
-		this.fname = fname;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
 	}
 
 	public String getUsername() {
@@ -76,14 +72,6 @@ public class Utilisateur implements Serializable {
 		this.email = email;
 	}
 
-	public String getFname() {
-		return fname;
-	}
-
-	public void setFname(final String fname) {
-		this.fname = fname;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -92,10 +80,12 @@ public class Utilisateur implements Serializable {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "Utilisateur [id=" + id + ", email=" + email + ", fname=" + fname + ", username=" + username + ", name="
-				+ name + ", password=" + password + "";
+	public List<Statistique> getlStat() {
+		return lStat;
+	}
+
+	public void setlStat(final List<Statistique> lStat) {
+		this.lStat = lStat;
 	}
 
 }
