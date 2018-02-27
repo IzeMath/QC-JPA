@@ -2,17 +2,19 @@ package org.user;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Entity implementation class for Entity: Utilisateur
@@ -25,8 +27,10 @@ import javax.persistence.OneToMany;
 public class Utilisateur implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	@Column(columnDefinition = "BINARY(16)")
+	private UUID id;
 	@Column(unique = true)
 	private String username;
 	@Column(unique = true)
@@ -56,11 +60,11 @@ public class Utilisateur implements Serializable {
 		this.username = username;
 	}
 
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(final int id) {
+	public void setId(final UUID id) {
 		this.id = id;
 	}
 
